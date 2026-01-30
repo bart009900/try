@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bright Notes</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app__header">
+        <div>
+          <p class="eyebrow">Simple HTML App</p>
+          <h1>Bright Notes</h1>
+          <p class="subtitle">
+            Capture quick thoughts, tag them with a mood, and keep your day in sync.
+          </p>
+        </div>
+        <div class="stats" aria-live="polite">
+          <p class="stats__label">Notes today</p>
+          <p class="stats__value" id="note-count">0</p>
+        </div>
+      </header>
+
+      <main class="app__content">
+        <section class="card">
+          <h2>Create a note</h2>
+          <form id="note-form" class="note-form">
+            <label>
+              Title
+              <input type="text" id="note-title" placeholder="Morning check-in" maxlength="60" required />
+            </label>
+            <label>
+              Note
+              <textarea id="note-body" rows="4" placeholder="What is on your mind?" required></textarea>
+            </label>
+            <label>
+              Mood
+              <select id="note-mood">
+                <option value="Focused">Focused</option>
+                <option value="Happy">Happy</option>
+                <option value="Curious">Curious</option>
+                <option value="Calm">Calm</option>
+                <option value="Grateful">Grateful</option>
+              </select>
+            </label>
+            <button type="submit">Save note</button>
+          </form>
+        </section>
+
+        <section class="card">
+          <div class="card__header">
+            <h2>Recent notes</h2>
+            <input type="search" id="note-search" placeholder="Search notes" aria-label="Search notes" />
+          </div>
+          <div id="note-list" class="note-list" role="list"></div>
+          <p id="empty-state" class="empty-state" role="status">
+            Your notes will appear here once you add the first one.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <template id="note-template">
+      <article class="note" role="listitem">
+        <div>
+          <p class="note__mood"></p>
+          <h3 class="note__title"></h3>
+          <p class="note__body"></p>
+          <p class="note__meta"></p>
+        </div>
+        <button class="note__delete" type="button">Delete</button>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
