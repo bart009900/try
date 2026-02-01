@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bright Notes</title>
+    <title>Dog Walk Log</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -11,28 +11,35 @@
       <header class="app__header">
         <div>
           <p class="eyebrow">Simple HTML App</p>
-          <h1>Bright Notes</h1>
+          <h1>Dog Walk Log</h1>
           <p class="subtitle">
-            Capture quick thoughts, tag them with a mood, and keep your day in sync.
+            Track every walk and see who took the dog out most recently.
           </p>
         </div>
         <div class="stats" aria-live="polite">
-          <p class="stats__label">Notes today</p>
+          <p class="stats__label">Walks logged</p>
           <p class="stats__value" id="note-count">0</p>
         </div>
       </header>
 
       <main class="app__content">
         <section class="card">
-          <h2>Create a note</h2>
+          <h2>Log a walk</h2>
           <form id="note-form" class="note-form">
             <label>
-              Title
-              <input type="text" id="note-title" placeholder="Morning check-in" maxlength="60" required />
+              Walker name
+              <input
+                type="text"
+                id="walker-name"
+                placeholder="Alex"
+                maxlength="40"
+                autocomplete="name"
+                required
+              />
             </label>
             <label>
-              Note
-              <textarea id="note-body" rows="4" placeholder="What is on your mind?" required></textarea>
+              Walk details
+              <textarea id="note-body" rows="4" placeholder="2 miles around the park." required></textarea>
             </label>
             <label>
               Mood
@@ -44,18 +51,18 @@
                 <option value="Grateful">Grateful</option>
               </select>
             </label>
-            <button type="submit">Save note</button>
+            <button type="submit">Save walk</button>
           </form>
         </section>
 
         <section class="card">
           <div class="card__header">
-            <h2>Recent notes</h2>
-            <input type="search" id="note-search" placeholder="Search notes" aria-label="Search notes" />
+            <h2>Recent walks</h2>
+            <input type="search" id="note-search" placeholder="Search walks" aria-label="Search walks" />
           </div>
           <div id="note-list" class="note-list" role="list"></div>
           <p id="empty-state" class="empty-state" role="status">
-            Your notes will appear here once you add the first one.
+            Your walk history will appear here once you add the first one.
           </p>
         </section>
       </main>

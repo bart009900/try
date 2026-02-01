@@ -1,5 +1,5 @@
 const form = document.getElementById("note-form");
-const titleInput = document.getElementById("note-title");
+const walkerInput = document.getElementById("walker-name");
 const bodyInput = document.getElementById("note-body");
 const moodInput = document.getElementById("note-mood");
 const searchInput = document.getElementById("note-search");
@@ -40,7 +40,7 @@ const renderNotes = () => {
   const query = searchInput.value.trim().toLowerCase();
   noteList.innerHTML = "";
   const filtered = notes.filter((note) =>
-    [note.title, note.body, note.mood].some((text) =>
+    [note.walker, note.body, note.mood].some((text) =>
       text.toLowerCase().includes(query)
     )
   );
@@ -48,7 +48,7 @@ const renderNotes = () => {
   filtered.forEach((note) => {
     const noteNode = noteTemplate.content.cloneNode(true);
     noteNode.querySelector(".note__mood").textContent = note.mood;
-    noteNode.querySelector(".note__title").textContent = note.title;
+    noteNode.querySelector(".note__title").textContent = note.walker;
     noteNode.querySelector(".note__body").textContent = note.body;
     noteNode.querySelector(".note__meta").textContent = `Saved ${formatDate(
       note.createdAt
@@ -70,13 +70,13 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   const newNote = {
     id: crypto.randomUUID(),
-    title: titleInput.value.trim(),
+    walker: walkerInput.value.trim(),
     body: bodyInput.value.trim(),
     mood: moodInput.value,
     createdAt: Date.now(),
   };
 
-  if (!newNote.title || !newNote.body) {
+  if (!newNote.walker || !newNote.body) {
     return;
   }
 
